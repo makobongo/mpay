@@ -39,7 +39,6 @@ class PaymentController extends Controller
         return redirect()->away($url);
     }
     public function PaymentSuccess(){
-        // dd(request()->all());
         $token = request()->token;
         $provider = new PaypalClient;
         $provider->setApiCredentials(config('paypal'));
