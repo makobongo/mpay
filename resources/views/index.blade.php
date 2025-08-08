@@ -33,7 +33,7 @@
                 var amount = amountDiv.value;
                 var allowedExpressions= /^\d+$/;
                 if (!allowedExpressions.exec(amount)) {
-                        alert('Please enter amount');
+                        alert('Please enter a valid amount');
                         amountDiv.value = '';
                         return false;
                     }
@@ -83,9 +83,17 @@
                             <b>"Secure Payments, Seamless Checkout."</b>
                         </p>
                         <ul class="flex flex-col mb-4 lg:mb-6">
-                            <p style="text-align: center;">Enter the amount in USD ($)</p>
+                            <p style="text-align: center;">
+                                <select class="shadow appearance-none border rounded" style="background: black;" required name="currency">
+                                    <option value="">Select your currency</option>
+                                    <option value="USD">USD</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="GBP">GBP</option>
+                                    <option value="CAD">CAD</option>
+                                </select>
+                            </p>
                             <br>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" style="text-align: center;" id="amount" name="amount" type="text" placeholder="USD" required onkeyup="validateAmount()" autofocus>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" style="text-align: center;" id="amount" name="amount" type="text" placeholder="Amount to Pay" required onkeyup="validateAmount()" autofocus>
                         </ul>
                         <ul>
                             <li>
