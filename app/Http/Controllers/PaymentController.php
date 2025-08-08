@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
@@ -46,7 +47,17 @@ class PaymentController extends Controller
 
         $order = $provider->capturePaymentOrder($token);
         if(isset($order['status']) && $order['status'] === 'COMPLETED'){
+            Payment::create([
+                'payment_id' => $order['id'],
+                'payment_status' => $order['status'],
+                'email_address' => $order['payment_source']['paypal']['email_address'],
+                'given_name' => $order['payment_source']['paypal']['name']['given_name'],
+                'surname' => $order['payment_source']['paypal']['name']['surname'],
+                'currency_code' => $order['purchase_units'][0]['payments']['captures'][0]['amount']['currency_code'],
+                'value' => $order['purchase_units'][0]['payments']['captures'][0]['amount']['value']
+            ]);
             return view('success');
+            
         }
     }
     public function PaymentCancel(){
