@@ -27,6 +27,18 @@
                 filter: grayscale(100%); /* Restores the image to full color on hover */
             }
         </style>
+        <script>
+            function validateAmount(){
+                const amountDiv = document.getElementById('amount');
+                var amount = amountDiv.value;
+                var allowedExpressions= /^\d+$/;
+                if (!allowedExpressions.exec(amount)) {
+                        alert('Please enter a valid amount');
+                        amountDiv.value = '';
+                        return false;
+                    }
+            }
+        </script>
     </head>
     <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
         <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
@@ -71,9 +83,17 @@
                             <b>"Secure Payments, Seamless Checkout."</b>
                         </p>
                         <ul class="flex flex-col mb-4 lg:mb-6">
-                            <p style="text-align: center;">Enter the amount in USD ($)</p>
+                            <p style="text-align: center;">
+                                <select class="shadow appearance-none border rounded" style="background: black;" required name="currency">
+                                    <option value="">Select your currency</option>
+                                    <option value="USD">USD</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="GBP">GBP</option>
+                                    <option value="CAD">CAD</option>
+                                </select>
+                            </p>
                             <br>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" style="text-align: center;" id="username" type="text" placeholder="USD" autofocus>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" style="text-align: center;" id="amount" name="amount" type="text" placeholder="Amount to Pay" required onkeyup="validateAmount()" autofocus>
                         </ul>
                         <ul>
                             <li>
