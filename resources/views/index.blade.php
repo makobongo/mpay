@@ -97,7 +97,7 @@
                         </ul>
                         <ul>
                             <li>
-                                <button class="w-full" style="background: #F54927;color:black;font-weight: bolder;border-radius: 10px;">
+                                <button class="w-full" style="background: #F54927;color:black;font-weight: bolder;border-radius: 10px;cursor: pointer;">
                                     Proceed to pay via <i><span style="color: #000080;">Pay</span><span style="color: #00FFFF;">Pal</span></i>
                                 </button>
                             </li>
