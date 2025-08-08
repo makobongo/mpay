@@ -39,7 +39,16 @@ class PaymentController extends Controller
         return redirect()->away($url);
     }
     public function PaymentSuccess(){
-        dd(request()->all());
+        // dd(request()->all());
+        $token = request()->token;
+        $provider = new PaypalClient;
+        $provider->setApiCredentials(config('paypal'));
+        $provider->getAccessToken();
+
+        $order = $provider->capturePaymentOrder($token);
+        if(isset($order['status']) && $order['status'] === 'COMPLETED'){
+            return view('success');
+        }
     }
     public function PaymentCancel(){
         return view('cancel');
