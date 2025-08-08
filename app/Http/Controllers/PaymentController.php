@@ -12,7 +12,7 @@ class PaymentController extends Controller
     {
         return view('index');
     }
-    public function PaypalPaymentLink($id)
+    public function PaypalPaymentLink()
     {
         $provider = new PaypalClient;
         $provider->setApiCredentials(config('paypal'));
@@ -29,7 +29,7 @@ class PaymentController extends Controller
                         "amount" =>
                             [
                                 "currency_code" => "USD",
-                                "value" => "2.00"
+                                "value" => request()->amount
                             ]
                     ]
                 ]
