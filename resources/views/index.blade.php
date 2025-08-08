@@ -73,7 +73,7 @@
                         <ul class="flex flex-col mb-4 lg:mb-6">
                             <p style="text-align: center;">Enter the amount in USD ($)</p>
                             <br>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" style="text-align: center;" id="username" type="text" placeholder="USD" autofocus>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" style="text-align: center;" id="amount" name="amount" type="text" placeholder="USD" autofocus>
                         </ul>
                         <ul>
                             <li>
