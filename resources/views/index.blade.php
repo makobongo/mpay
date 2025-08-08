@@ -9,6 +9,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -38,9 +39,26 @@
                         return false;
                     }
             }
+            function pay(){
+                const submitDiv = document.getElementById('submitRequest');
+                const loadingDiv = document.getElementById('submitLoading');
+                const amount = document.getElementById('amount');
+                const submitBtn = document.getElementById('submitBtn');
+                if (amount.value.trim() === '') {
+                    submitDiv.style.display = 'block';
+                    loadingDiv.style.display = 'none';
+                } else {
+                    submitDiv.style.display = 'none';
+                    loadingDiv.style.display = 'block';
+                }
+            }
+            function toggleOnSubmitButton(){
+                const submitDiv = document.getElementById('submitLoading');
+                submitDiv.style.display = 'none';
+            }
         </script>
     </head>
-    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
+    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col" onload="toggleOnSubmitButton()">
         <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
             @if (Route::has('login'))
                 <nav class="flex items-center justify-end gap-4">
@@ -96,9 +114,14 @@
                             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" style="text-align: center;" id="amount" name="amount" type="text" placeholder="Amount to Pay" required onkeyup="validateAmount()" autofocus>
                         </ul>
                         <ul>
-                            <li>
-                                <button class="w-full" style="background: #F54927;color:black;font-weight: bolder;border-radius: 10px;cursor: pointer;">
+                            <li id="submitRequest">
+                                <button class="w-full" style="background: #F54927;color:black;font-weight: bolder;border-radius: 10px;cursor: pointer;" onclick="pay()" id="submitBtn">
                                     Proceed to pay via <i><span style="color: #000080;">Pay</span><span style="color: #00FFFF;">Pal</span></i>
+                                </button>
+                            </li>
+                            <li id="submitLoading">
+                                <button class="w-full" style="background: #F54927;color:black;font-weight: bolder;border-radius: 10px;cursor: pointer;" disabled>
+                                    <i class="fa fa-spinner fa-spin"></i>&nbsp;wait its processing....
                                 </button>
                             </li>
                         </ul>
