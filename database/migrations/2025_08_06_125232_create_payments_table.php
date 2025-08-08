@@ -13,8 +13,13 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->decimal('amount', 10, 2);
+           $table->string('payment_id')->nullable();
+           $table->string('payment_status')->nullable();
+           $table->string('email_address')->nullable();
+           $table->string('given_name')->nullable();
+           $table->string('surname')->nullable();
+           $table->string('currency_code')->nullable();
+           $table->decimal('value',10, 2)->nullable();
             $table->timestamps();
         });
     }
