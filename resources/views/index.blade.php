@@ -60,9 +60,10 @@
         </header>
         <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
             <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
-                <form action="">
+                <form action="{{ route('paypal.payment.payment')}}" method="post">
+                    @csrf
                     <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
-                        <h4>Get started with payment integration today</h4>
+                        <h4 style="text-align: center;">Paypal payment integrated</h4>
                         <br>
                         <hr>
                         <br>
@@ -83,9 +84,9 @@
                         </ul>
                     </div>
                 </form>
-                <div class="bg-[#fff2f2] dark:bg-[#2765F5] relative lg:-ml-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg aspect-[335/376] lg:aspect-auto w-full lg:w-[438px] shrink-0 overflow-hidden">
-                    <div style="text-align: center;">
-                        <b>Process Your payment today <br> <i style="font-size: 16px;">with paypal</i> </b>
+                <div class="bg-[#fff2f2] dark:bg-[#FFE6EA] relative lg:-ml-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg aspect-[335/376] lg:aspect-auto w-full lg:w-[438px] shrink-0 overflow-hidden">
+                    <div style="text-align: center;margin-top: 30%;">
+                        <b>Process payment <br> <i style="font-size: 16px;">with paypal</i> </b>
                     </div>
                 </div>
             </main>
