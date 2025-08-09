@@ -43,8 +43,9 @@
                 const submitDiv = document.getElementById('submitRequest');
                 const loadingDiv = document.getElementById('submitLoading');
                 const amount = document.getElementById('amount');
+                const currency = document.getElementById('currency');
                 const submitBtn = document.getElementById('submitBtn');
-                if (amount.value.trim() === '') {
+                if (amount.value.trim() === '' || currency.value.trim() === '') {
                     submitDiv.style.display = 'block';
                     loadingDiv.style.display = 'none';
                 } else {
@@ -102,7 +103,7 @@
                         </p>
                         <ul class="flex flex-col mb-4 lg:mb-6">
                             <p style="text-align: center;">
-                                <select class="shadow appearance-none border rounded" style="background: black;" required name="currency">
+                                <select class="shadow appearance-none border rounded" style="background: black;" required name="currency" id="currency">
                                     <option value="">Select your currency</option>
                                     <option value="USD">USD</option>
                                     <option value="EUR">EUR</option>
